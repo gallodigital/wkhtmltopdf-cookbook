@@ -1,3 +1,5 @@
-default[:wkhtmltopdf][:arch] = "amd64"
-default[:wkhtmltopdf][:version] = "0.11.0_rc1"
-default[:wkhtmltopdf][:static_download_url] = "http://wkhtmltopdf.googlecode.com/files/wkhtmltopdf-#{node[:wkhtmltopdf][:version]}-static-#{node[:wkhtmltopdf][:arch]}.tar.bz2"
+# FIXME: Make this support other platforms better.
+default['wkhtmltopdf']['arch'] = "amd64"
+default['wkhtmltopdf']['platform'] = "centos6"
+default['wkhtmltopdf']['version'] = "0.12.1"
+default['wkhtmltopdf']['static_download_url'] = "http://downloads.sourceforge.net/project/wkhtmltopdf/#{node['wkhtmltopdf']['version']}/wkhtmltox-#{node['wkhtmltopdf']['version']}_linux-#{node['wkhtmltopdf']['platform']}-#{node['wkhtmltopdf']['arch']}.rpm"
