@@ -1,21 +1,22 @@
 Description
 ===========
 
-Installs wkhtmltopdf binary from tarball.
+Installs wkhtmltopdf binary.
+
+Requirements
+============
+
+* This cookbook has been modified to support Amazon Linux, and may not support Ubuntu anymore.
 
 Attributes
 ==========
 
 * `node['wkhtmltopdf']['arch']` - cpu architecture, defaults to `amd64`
-* `node['wkhtmltopdf']['version']` - wkhtmltopdf version, default to latest `0.11.0_rc1`
+* `node['wkhtmltopdf']['version']` - wkhtmltopdf version, default to latest `0.12.1`
 * `node['wkhtmltopdf']['static_download_url']` - wkhtmltopdf download source
 
-License and Author
-==================
-
-Author:: Arkency <dev@arkency.com>
-
-Copyright 2012, Arkency
+License
+=======
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
