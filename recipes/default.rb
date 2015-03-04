@@ -22,10 +22,12 @@ when "debian", "ubuntu"
   end
 
 when "centos", "amazon"
-  download_destination = File.join(cache_dir, "wkhtmltox.rpm")
+  download_destination    = File.join(cache_dir, "wkhtmltox.rpm")
+  static_download_url     = node['wkhtmltopdf']['static_download_url']
+  alt_static_download_url = static_download_url.gsub("/wkhtmltopdf/#{node['wkhtmltopdf']['version']}/", "/wkhtmltopdf/archive/#{node['wkhtmltopdf']['version']}/")
 
   remote_file download_destination do
-    source node['wkhtmltopdf']['static_download_url']
+    source [static_download_url, alt_static_download_url]
     mode "0644"
     action :create_if_missing
   end
