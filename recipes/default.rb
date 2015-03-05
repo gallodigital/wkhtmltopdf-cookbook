@@ -22,18 +22,16 @@ when "debian", "ubuntu"
   end
 
 when "centos", "amazon"
-  download_destination    = File.join(cache_dir, "wkhtmltox.rpm")
-  static_download_url     = node['wkhtmltopdf']['static_download_url']
-  alt_static_download_url = static_download_url.gsub("/wkhtmltopdf/#{node['wkhtmltopdf']['version']}/", "/wkhtmltopdf/archive/#{node['wkhtmltopdf']['version']}/")
+  destination = File.join(cache_dir, "wkhtmltox.rpm")
 
-  remote_file download_destination do
-    source [static_download_url, alt_static_download_url]
+  cookbook_file destination do
+    source node['wkhtmltopdf']['package_file']
     mode "0644"
     action :create_if_missing
   end
 
   rpm_package "wkhtmltox" do
-    source download_destination
+    source destination
     action :install
   end
 end
