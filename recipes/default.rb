@@ -24,13 +24,13 @@ when "debian", "ubuntu"
 when "centos", "amazon"
   destination = File.join(cache_dir, "wkhtmltox.rpm")
 
-  cookbook_file destination do
-    source node['wkhtmltopdf']['package_file']
-    mode "0644"
+  remote_file destination do
+    source "https://s3-us-west-1.amazonaws.com/gallodigital-deployment-assets/#{node['wkhtmltopdf']['package_file']}"
+    mode '0644'
     action :create_if_missing
   end
 
-  rpm_package "wkhtmltox" do
+  rpm_package 'wkhtmltox' do
     source destination
     action :install
   end
